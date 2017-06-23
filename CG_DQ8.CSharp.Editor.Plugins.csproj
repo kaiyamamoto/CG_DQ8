@@ -127,11 +127,16 @@
       <Project>{811CCAB3-886E-F7A1-BF1E-7829F96E276E}</Project>
       <Name>CG_DQ8.CSharp.Plugins</Name>
     </ProjectReference>
+    <ProjectReference Include="CG_DQ8.CSharp.csproj">
+      <Project>{20A969EC-14A0-419C-E022-6173005F5FED}</Project>
+      <Name>CG_DQ8.CSharp</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Plugins\UniRx\ReadMe.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
