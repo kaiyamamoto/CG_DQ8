@@ -10,6 +10,7 @@ using UnityEngine;
 using System;
 using UniRx;
 using UniRx.Triggers;
+using DG.Tweening;
 
 public class Hero : MonoBehaviour {
 
@@ -28,25 +29,103 @@ public class Hero : MonoBehaviour {
     //アニメーター
     private Animator m_anime;
 
+    //自身の初期位置
+    private Vector3 m_firstPos = new Vector3(0, 0, 0);
+
+    //スライムの位置
+    private Vector3 m_slime1Pos = new Vector3(12.07f, 0.0f, 5.65f);
+    private Vector3 m_slime2Pos = new Vector3(4.4f, 0.0f, 4.6f);
+    private Vector3 m_slime3Pos = new Vector3(-4.4f, 0.0f, 4.6f);
+
     /// <summary>
     /// 初期化処理
     /// </summary>
     void Start () {
 
+        //初期位置を記録
+        m_firstPos = transform.position;
+
         //アニメーター
         m_anime = GetComponent<Animator>();
 
-        //アニメーションの制御
-        Observable.Timer(TimeSpan.FromSeconds(2)).Subscribe(_ =>  { m_anime.SetTrigger(ANIME_1); });
-        Observable.Timer(TimeSpan.FromSeconds(4)).Subscribe(_ =>  { m_anime.SetTrigger(ANIME_2); });
-        Observable.Timer(TimeSpan.FromSeconds(6)).Subscribe(_ =>  { m_anime.SetTrigger(ANIME_3); });
-        Observable.Timer(TimeSpan.FromSeconds(8)).Subscribe(_ =>  { m_anime.SetTrigger(ANIME_4); });
-        Observable.Timer(TimeSpan.FromSeconds(10)).Subscribe(_ => { m_anime.SetTrigger(ANIME_5); });
-        Observable.Timer(TimeSpan.FromSeconds(12)).Subscribe(_ => { m_anime.SetTrigger(ANIME_6); });
-        Observable.Timer(TimeSpan.FromSeconds(14)).Subscribe(_ => { m_anime.SetTrigger(ANIME_7); });
-        Observable.Timer(TimeSpan.FromSeconds(16)).Subscribe(_ => { m_anime.SetTrigger(ANIME_8); });
-        Observable.Timer(TimeSpan.FromSeconds(18)).Subscribe(_ => { m_anime.SetTrigger(ANIME_9); });
-        Observable.Timer(TimeSpan.FromSeconds(20)).Subscribe(_ => { m_anime.SetTrigger(ANIME_10); });
+
+        /*--[アニメーションの制御]--*/
+
+        //１～７秒は立ってる
+
+        //前方ジャンプ１秒
+        Observable.Timer(TimeSpan.FromSeconds(8))
+            .Subscribe(_ => {
+                m_anime.SetTrigger(ANIME_1);
+                transform.DOMove(m_slime3Pos, 1);
+                transform.DORotateQuaternion(Quaternion.LookRotation(m_slime3Pos - m_firstPos), 1);
+            });
+
+        //攻撃１秒
+        Observable.Timer(TimeSpan.FromSeconds(9))
+            .Subscribe(_ =>    {
+                m_anime.SetTrigger(ANIME_2);
+            });
+
+        //後方ジャンプ１秒
+        Observable.Timer(TimeSpan.FromSeconds(10))
+            .Subscribe(_ =>   {
+                m_anime.SetTrigger(ANIME_3);
+                transform.DOMove(m_firstPos, 1);
+                transform.DORotate(new Vector3(0,0,0),1);
+            });
+
+
+
+        //立ってる11秒
+        Observable.Timer(TimeSpan.FromSeconds(11))
+            .Subscribe(_ =>   {
+                m_anime.SetTrigger(ANIME_4);
+            });
+
+
+
+        //前方移動１秒
+        Observable.Timer(TimeSpan.FromSeconds(21.5))
+            .Subscribe(_ =>   {
+                m_anime.SetTrigger(ANIME_5);
+                transform.DOMove(m_slime1Pos, 1.5f);
+                transform.DORotateQuaternion(Quaternion.LookRotation(m_slime1Pos - m_firstPos), 1);
+            });
+
+        //攻撃１秒
+        Observable.Timer(TimeSpan.FromSeconds(23f))
+            .Subscribe(_ =>   {
+                m_anime.SetTrigger(ANIME_6);
+            });
+
+        //後方ジャンプ１秒
+        Observable.Timer(TimeSpan.FromSeconds(24f))
+            .Subscribe(_ =>   {
+                m_anime.SetTrigger(ANIME_7);
+                transform.DOMove(m_firstPos, 1);
+                transform.DORotate(new Vector3(0, 0, 0), 1);
+            });
+
+
+
+        //立ってる３秒
+        Observable.Timer(TimeSpan.FromSeconds(25f))
+            .Subscribe(_ =>   {
+                m_anime.SetTrigger(ANIME_8);
+            });
+
+        //武器しまう1.5秒
+        Observable.Timer(TimeSpan.FromSeconds(28))
+            .Subscribe(_ =>   {
+                m_anime.SetTrigger(ANIME_9);
+            });
+
+        //武器しまい終わり1.5秒
+        Observable.Timer(TimeSpan.FromSeconds(29.5))
+            .Subscribe(_ => {
+                m_anime.SetTrigger(ANIME_10);
+            });
     }
 
 }

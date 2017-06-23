@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 3c36c9c8e57db4a4a8bc96b4aaf9901c
-timeCreated: 1497590425
+guid: 58699a3472626214e88ec39b8d98b0cf
+timeCreated: 1498195057
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -55,9 +55,6 @@ ModelImporter:
     100094: mixamorig:Spine
     100096: mixamorig:Spine1
     100098: mixamorig:Spine2
-    100100: obj11
-    100102: polymsh
-    100104: skin6__oline_i_c
     400000: //RootNode
     400002: mixamorig:Head
     400004: mixamorig:HeadTop_End
@@ -108,17 +105,8 @@ ModelImporter:
     400094: mixamorig:Spine
     400096: mixamorig:Spine1
     400098: mixamorig:Spine2
-    400100: obj11
-    400102: polymsh
-    400104: skin6__oline_i_c
-    4300000: obj11
-    4300002: polymsh
-    4300004: skin6__oline_i_c
     7400000: mixamo.com
     9500000: //RootNode
-    13700000: obj11
-    13700002: polymsh
-    13700004: skin6__oline_i_c
   materials:
     importMaterials: 1
     materialName: 0
