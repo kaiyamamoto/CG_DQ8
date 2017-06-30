@@ -1,7 +1,7 @@
 ﻿//************************************************/
 //* @file  :Hero.cs
 //* @brief :主人公用のスクリプト
-//* @date  :2017/06/23
+//* @date  :2017/06/30
 //* @author:S.Katou
 //************************************************/
 using System.Collections;
@@ -36,6 +36,14 @@ public class Hero : MonoBehaviour {
     private Vector3 m_slime1Pos = new Vector3(12.07f, 0.0f, 5.65f);
     private Vector3 m_slime2Pos = new Vector3(4.4f, 0.0f, 4.6f);
     private Vector3 m_slime3Pos = new Vector3(-4.4f, 0.0f, 4.6f);
+
+    //剣　切り離す用
+    [SerializeField]
+    private GameObject m_sword;
+
+    //剣　付ける用
+    [SerializeField]
+    private GameObject m_born;
 
     /// <summary>
     /// 初期化処理
@@ -89,18 +97,18 @@ public class Hero : MonoBehaviour {
         Observable.Timer(TimeSpan.FromSeconds(21.5))
             .Subscribe(_ =>   {
                 m_anime.SetTrigger(ANIME_5);
-                transform.DOMove(m_slime1Pos, 1.5f);
-                transform.DORotateQuaternion(Quaternion.LookRotation(m_slime1Pos - m_firstPos), 1);
+                transform.DOMove(m_slime1Pos, 1);
+                transform.rotation = Quaternion.LookRotation(m_slime1Pos - m_firstPos);
             });
 
         //攻撃１秒
-        Observable.Timer(TimeSpan.FromSeconds(23f))
+        Observable.Timer(TimeSpan.FromSeconds(22.5f))
             .Subscribe(_ =>   {
                 m_anime.SetTrigger(ANIME_6);
             });
 
         //後方ジャンプ１秒
-        Observable.Timer(TimeSpan.FromSeconds(24f))
+        Observable.Timer(TimeSpan.FromSeconds(23.5f))
             .Subscribe(_ =>   {
                 m_anime.SetTrigger(ANIME_7);
                 transform.DOMove(m_firstPos, 1);
@@ -110,20 +118,22 @@ public class Hero : MonoBehaviour {
 
 
         //立ってる３秒
-        Observable.Timer(TimeSpan.FromSeconds(25f))
+        Observable.Timer(TimeSpan.FromSeconds(24.5f))
             .Subscribe(_ =>   {
                 m_anime.SetTrigger(ANIME_8);
             });
 
         //武器しまう1.5秒
-        Observable.Timer(TimeSpan.FromSeconds(28))
+        Observable.Timer(TimeSpan.FromSeconds(27.5f))
             .Subscribe(_ =>   {
                 m_anime.SetTrigger(ANIME_9);
             });
 
         //武器しまい終わり1.5秒
-        Observable.Timer(TimeSpan.FromSeconds(29.5))
+        Observable.Timer(TimeSpan.FromSeconds(29.0f))
             .Subscribe(_ => {
+                //剣を切り離して、背中に着ける
+                m_sword.transform.parent = m_born.transform;
                 m_anime.SetTrigger(ANIME_10);
             });
     }
