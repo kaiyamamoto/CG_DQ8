@@ -77,7 +77,7 @@ public class PerformanceCamera : MonoBehaviour {
 
 
         //主人公->スライムC
-        Observable.Timer(TimeSpan.FromSeconds(22))
+        Observable.Timer(TimeSpan.FromSeconds(21.5))
             .Subscribe(_ => {
                 transform.position = new Vector3(-8f, 3.0f, -8.0f);
                 transform.rotation = Quaternion.Euler(10.0f, 70.0f, 0.0f);
@@ -87,7 +87,7 @@ public class PerformanceCamera : MonoBehaviour {
 
 
         //ヤンガス->スライムC
-        Observable.Timer(TimeSpan.FromSeconds(25))
+        Observable.Timer(TimeSpan.FromSeconds(24.5))
             .Subscribe(_ => {
                 transform.position = new Vector3(18f, 3.5f, 14f);
                 transform.rotation = Quaternion.Euler(10.0f, 208.0f, 0.0f);
@@ -96,7 +96,7 @@ public class PerformanceCamera : MonoBehaviour {
 
 
         //戦闘終了
-        Observable.Timer(TimeSpan.FromSeconds(27.5))
+        Observable.Timer(TimeSpan.FromSeconds(27))
             .Subscribe(_ => {
                 transform.position = new Vector3(9f, 6f, 0.5f);
                 transform.rotation = Quaternion.Euler(20.0f, 210.0f, 0.0f);

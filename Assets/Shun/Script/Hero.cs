@@ -79,8 +79,8 @@ public class Hero : MonoBehaviour {
         Observable.Timer(TimeSpan.FromSeconds(10))
             .Subscribe(_ =>   {
                 m_anime.SetTrigger(ANIME_3);
-                transform.DOMove(m_firstPos, 1);
-                transform.DORotate(new Vector3(0,0,0),1);
+                transform.DOMove(m_firstPos, 0.8f);
+                transform.DORotate(new Vector3(0,0,0),0.8f);
             });
 
 
@@ -111,8 +111,8 @@ public class Hero : MonoBehaviour {
         Observable.Timer(TimeSpan.FromSeconds(23.5f))
             .Subscribe(_ =>   {
                 m_anime.SetTrigger(ANIME_7);
-                transform.DOMove(m_firstPos, 1);
-                transform.DORotate(new Vector3(0, 0, 0), 1);
+                transform.DOMove(m_firstPos, 0.8f).SetEase(Ease.OutSine);
+                transform.DORotate(new Vector3(0, 0, 0), 0.8f);
             });
 
 

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CG_DQ8.CSharp", "CG_DQ8.CSh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CG_DQ8.CSharp.Editor.Plugins", "CG_DQ8.CSharp.Editor.Plugins.csproj", "{F361A0E4-AD71-A415-F3A1-4C2F5EF33905}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CG_DQ8.CSharp.Editor", "CG_DQ8.CSharp.Editor.csproj", "{7A518D2F-128E-C109-9DDA-C1DC5EA925A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{F361A0E4-AD71-A415-F3A1-4C2F5EF33905}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F361A0E4-AD71-A415-F3A1-4C2F5EF33905}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F361A0E4-AD71-A415-F3A1-4C2F5EF33905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A518D2F-128E-C109-9DDA-C1DC5EA925A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A518D2F-128E-C109-9DDA-C1DC5EA925A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A518D2F-128E-C109-9DDA-C1DC5EA925A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A518D2F-128E-C109-9DDA-C1DC5EA925A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
