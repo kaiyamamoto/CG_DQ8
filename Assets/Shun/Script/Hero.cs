@@ -111,8 +111,8 @@ public class Hero : MonoBehaviour {
         Observable.Timer(TimeSpan.FromSeconds(23.5f))
             .Subscribe(_ =>   {
                 m_anime.SetTrigger(ANIME_7);
-                transform.DOMove(m_firstPos, 0.8f).SetEase(Ease.OutSine);
-                transform.DORotate(new Vector3(0, 0, 0), 0.8f);
+                transform.DOMove(m_firstPos, 0.6f).SetEase(Ease.OutSine);
+                transform.DORotate(new Vector3(0, 0, 0), 0.6f);
             });
 
 
@@ -126,12 +126,18 @@ public class Hero : MonoBehaviour {
         //武器しまう1.5秒
         Observable.Timer(TimeSpan.FromSeconds(27.5f))
             .Subscribe(_ =>   {
+                //アニメーションでずれる位置の調整
+                transform.DOLocalMoveZ(m_firstPos .z - 0.35f, 1.5f);
+
                 m_anime.SetTrigger(ANIME_9);
             });
 
         //武器しまい終わり1.5秒
-        Observable.Timer(TimeSpan.FromSeconds(29.0f))
+        Observable.Timer(TimeSpan.FromSeconds(28.8f))
             .Subscribe(_ => {
+                //アニメーションでずれる位置の調整
+                transform.DOLocalMoveZ(m_firstPos.z, 1.5f);
+
                 //剣を切り離して、背中に着ける
                 m_sword.transform.parent = m_born.transform;
                 m_anime.SetTrigger(ANIME_10);
