@@ -49,15 +49,16 @@ public class Yangus : MonoBehaviour
         // 初期位置記録
         m_firstPos = transform.position;
 
-        m_target1Pos = new Vector3(-3.5f, 0.0f, 5.3f);
+        m_target1Pos = new Vector3(5.6f, 0.0f, 5.0f);
         m_target2Pos = new Vector3(13.07f, 0.0f, 4.8f);
 
         // アニメーター
         m_anime = GetComponent<Animator>();
 
+        float y = transform.position.y;
         Sequence jump = DOTween.Sequence()
-            .Append(transform.DOMoveY(5, 0.25f))
-            .Append(transform.DOMoveY(0, 0.25f))
+            .Append(transform.DOMoveY(y+5, 0.25f))
+            .Append(transform.DOMoveY(y, 0.25f))
             .SetAutoKill(false);
         jump.Complete();
 
