@@ -21,7 +21,7 @@ public class PerformanceCamera : MonoBehaviour {
 
         //１～７秒は正面
         transform.position = m_frontPos;
-        transform.rotation = Quaternion.LookRotation(new Vector3(0.0f, 0.0f, .0f), Vector3.up);
+        transform.rotation = Quaternion.LookRotation(new Vector3(0.0f, 0.0f,0.0f), Vector3.up);
 
         //主人公->スライムA　攻撃
         Observable.Timer(TimeSpan.FromSeconds(8))
