@@ -145,14 +145,8 @@ public class Yangus : MonoBehaviour
             });
 
         //武器しまい終わり1.5秒
-        Observable.Timer(TimeSpan.FromSeconds(29.5f))
+        Observable.Timer(TimeSpan.FromSeconds(28.8f))
             .Subscribe(_ =>
-            {
-                //剣を切り離して、背中に着ける
-                m_anime.SetTrigger(ENDIDLE);
-            });
-        Observable.Timer(TimeSpan.FromSeconds(30))
-              .Subscribe(_ =>
             {
                 //剣を切り離して、背中に着ける
                 m_club.transform.parent = m_born.transform;
