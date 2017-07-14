@@ -33,7 +33,7 @@ public class Hero : MonoBehaviour {
     private Vector3 m_firstPos = new Vector3(0, 0, 0);
 
     //スライムの位置
-    private Vector3 m_slime1Pos = new Vector3(12.07f, 0.0f, 5.65f);
+    private Vector3 m_slime1Pos = new Vector3(12.57f, 0.0f, 5.15f);
     private Vector3 m_slime2Pos = new Vector3(4.4f, 0.0f, 4.6f);
     private Vector3 m_slime3Pos = new Vector3(-4.4f, 0.0f, 4.6f);
 
