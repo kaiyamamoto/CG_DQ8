@@ -54,7 +54,7 @@ public class Yangus : MonoBehaviour
         m_anime = GetComponent<Animator>();
 
         Sequence jump = DOTween.Sequence()
-            .Append(transform.DOMoveY(3, 0.25f))
+            .Append(transform.DOMoveY(5, 0.25f))
             .Append(transform.DOMoveY(0, 0.25f))
             .SetAutoKill(false);
         jump.Complete();
@@ -67,9 +67,9 @@ public class Yangus : MonoBehaviour
         Observable.Timer(TimeSpan.FromSeconds(13))
             .Subscribe(_ => {
                 m_anime.SetTrigger(JUMP);
-                transform.DOMoveX(m_slime3Pos.x, 1);
-                transform.DOMoveZ(m_slime3Pos.z, 1);
-                transform.DORotateQuaternion(Quaternion.LookRotation(m_slime3Pos - m_firstPos), 1);
+                transform.DOMoveX(m_slime2Pos.x, 1);
+                transform.DOMoveZ(m_slime2Pos.z, 1);
+                transform.DORotateQuaternion(Quaternion.LookRotation(m_slime2Pos - m_firstPos), 1);
                 jump.Restart();
             });
         // ジャンプ
@@ -86,7 +86,7 @@ public class Yangus : MonoBehaviour
             });
 
         //後方ジャンプ１秒
-        Observable.Timer(TimeSpan.FromSeconds(15))
+        Observable.Timer(TimeSpan.FromSeconds(14.5f))
             .Subscribe(_ => {
                 m_anime.SetTrigger(BACKJUMP);
                 transform.DOMove(m_firstPos, 0.8f);
@@ -96,7 +96,7 @@ public class Yangus : MonoBehaviour
 
 
         //立ってる9秒
-        Observable.Timer(TimeSpan.FromSeconds(16))
+        Observable.Timer(TimeSpan.FromSeconds(15.5f))
             .Subscribe(_ => {
                 m_anime.SetTrigger(IDLE);
             });
