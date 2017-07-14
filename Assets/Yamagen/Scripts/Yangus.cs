@@ -29,9 +29,8 @@ public class Yangus : MonoBehaviour
     private Vector3 m_firstPos = new Vector3(0, 0, 0);
 
     // スライムの位置
-    private Vector3 m_slime1Pos = new Vector3(12.07f, 0.0f, 5.65f);
-    private Vector3 m_slime2Pos = new Vector3(4.4f, 0.0f, 4.6f);
-    private Vector3 m_slime3Pos = new Vector3(-4.4f, 0.0f, 4.6f);
+    private Vector3 m_target1Pos;
+    private Vector3 m_target2Pos;
 
     //棍棒
     [SerializeField]
@@ -50,6 +49,9 @@ public class Yangus : MonoBehaviour
         // 初期位置記録
         m_firstPos = transform.position;
 
+        m_target1Pos = new Vector3(-3.5f, 0.0f, 5.3f);
+        m_target2Pos = new Vector3(13.07f, 0.0f, 4.8f);
+
         // アニメーター
         m_anime = GetComponent<Animator>();
 
@@ -67,9 +69,9 @@ public class Yangus : MonoBehaviour
         Observable.Timer(TimeSpan.FromSeconds(13))
             .Subscribe(_ => {
                 m_anime.SetTrigger(JUMP);
-                transform.DOMoveX(m_slime2Pos.x, 1);
-                transform.DOMoveZ(m_slime2Pos.z, 1);
-                transform.DORotateQuaternion(Quaternion.LookRotation(m_slime2Pos - m_firstPos), 1);
+                transform.DOMoveX(m_target1Pos.x, 1);
+                transform.DOMoveZ(m_target1Pos.z, 1);
+                transform.DORotateQuaternion(Quaternion.LookRotation(m_target1Pos - m_firstPos), 1);
                 jump.Restart();
             });
         // ジャンプ
@@ -108,9 +110,9 @@ public class Yangus : MonoBehaviour
             .Subscribe(_ =>
             {
                 m_anime.SetTrigger(JUMP);
-                transform.DOMoveX(m_slime1Pos.x, 1);
-                transform.DOMoveZ(m_slime1Pos.z, 1);
-                transform.rotation = Quaternion.LookRotation(m_slime1Pos - m_firstPos);
+                transform.DOMoveX(m_target2Pos.x, 1);
+                transform.DOMoveZ(m_target2Pos.z, 1);
+                transform.rotation = Quaternion.LookRotation(m_target2Pos - m_firstPos);
                 jump.Restart();
             });
         Observable.Timer(TimeSpan.FromSeconds(25.5f))
