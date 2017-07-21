@@ -19,37 +19,44 @@ public class SlimeA : MonoBehaviour
     private const string ANIME_1 = "Action_01";
 
     //アニメーター
-    private Animator m_anime;
+    public Animator m_anime;
+
 
     //スライムの位置
-    private Vector3 m_slime1Pos = new Vector3(12.57f, 0.0f, 5.15f);
+    private Vector3 m_slime1Pos = new Vector3(13.4f, 0.0f, 6.7f);
+
+    // ノックバック
+    private Vector3 _NockBack = new Vector3(13.4f, 1.2f, 9.0f);
 
 
     void Start()
     {
-        // スライムAの座標記録
-        m_slime1Pos = transform.position;
-
         //アニメーター
         m_anime = GetComponent<Animator>();
 
+        // スライムAの座標記録
+        m_slime1Pos = transform.position;
+
+        Animation ani = GetComponent<Animation>();
+
         /*--[アニメーションの制御]--*/
 
-        // １～７秒は立ってる
+        // ８秒後アニメーション
 
-        // ダメージ１秒
+        // ダメージ(1秒間)
         Observable.Timer(TimeSpan.FromSeconds(9))
             .Subscribe(_ =>
             {
-                //transform.DOMove(Vector3(13.4f, 0, 0), 1);
-                m_anime.SetTrigger(ANIME_1);
-                Debug.Log("アニメーション");
+                // ジャンプ
+                transform.DOLocalJump(_NockBack, 2, 2, 1.5f);
+
+                // 1.5秒かけて後ろへ回転
+                transform.DORotate(new Vector3(-270, -180), 1.5f);
+
+                // アニメーションを止める
+                m_anime.speed = 0;
+
+                Debug.Log("ダメージ");
             });
-
-    }
-
-    void Update()
-    {
-
     }
 }
