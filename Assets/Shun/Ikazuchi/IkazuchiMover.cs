@@ -34,7 +34,6 @@ public class IkazuchiMover : MonoBehaviour {
             {
                 if (Vector3.Distance(transform.position, m_agent.destination) < 0.1f)
                 {
-                    Debug.Log("到着");
                     m_agent.destination = (m_target[m_nextTarget].position);
                     m_nextTarget++;
 
