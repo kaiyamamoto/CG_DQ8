@@ -76,7 +76,7 @@ public class Yangus : MonoBehaviour
         float time8 = time7 + 0.3f;
         float time9 = time8 + 0.7f;
         float time10 = time9 + 1.0f;
-        float time11 = time10 + 0.8f;
+        float time11 = time10 + 1.0f;
 
         //前方ジャンプ１秒
         Observable.Timer(TimeSpan.FromSeconds(time1))
@@ -164,8 +164,10 @@ public class Yangus : MonoBehaviour
         Observable.Timer(TimeSpan.FromSeconds(time11))
             .Subscribe(_ =>
             {
-                //剣を切り離して、背中に着ける
-                m_club.transform.parent = m_born.transform;
-            });
+				//剣を切り離して、背中に着ける
+				m_club.transform.parent = m_born.transform;
+				m_club.transform.position = m_born.transform.position;
+				m_club.transform.rotation = m_born.transform.rotation;
+			});
     }
 }
