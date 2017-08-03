@@ -57,5 +57,12 @@ public class SlimeC : MonoBehaviour
                 m_anime.speed = 0;
 
             });
-    }
+
+		Observable.Timer(TimeSpan.FromSeconds(11.5f))
+	.Subscribe(_ =>
+	{
+		Destroy(gameObject);
+	});
+
+	}
 }

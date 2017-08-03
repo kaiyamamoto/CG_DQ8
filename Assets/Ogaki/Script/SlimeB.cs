@@ -19,13 +19,13 @@ public class SlimeB : MonoBehaviour
     //アニメーター
     public Animator m_anime;
 
-    
+
     //スライムの位置
     private Vector3 m_slimeBPos = new Vector3(4.5f, 0, 6.7f);
 
     // アタック座標(ヤンガス)
     private Vector3 _yangasuPos = new Vector3(9.49f, 0f, -7);
-    
+
     // ノックバック
     private Vector3 _NockBack = new Vector3(4.5f, 1.2f, 9.0f);
 
@@ -57,9 +57,6 @@ public class SlimeB : MonoBehaviour
         Observable.Timer(TimeSpan.FromSeconds(12.5f))
             .Subscribe(_ =>
             {
-                //// その場ジャンプ          終了座標                    高さ  回数  時間
-                //transform.DOLocalJump(new Vector3(9.3f, 1.0f, -8.5f), 3.5f, 1, 0.5f);
-
                 Sequence Seq = DOTween.Sequence()
 
                 // その場ジャンプ          終了座標                    高さ  回数  時間
@@ -70,10 +67,6 @@ public class SlimeB : MonoBehaviour
                 .Append(transform.DOLocalMove
                 (new Vector3(9.3f, 0.0f, -7), 0.3f))
                 .SetAutoKill(false);
-
-                // アニメーションを止める
-                //m_anime.speed = 0;
-
             });
 
         // 戻るジャンプ(1秒間)
@@ -81,12 +74,12 @@ public class SlimeB : MonoBehaviour
             .Subscribe(_ =>
             {
                 // 元の場所へジャンプ
-                transform.DOLocalJump(m_slimeBPos, 3.5f, 1, 0.5f);
+                transform.DOLocalJump(m_slimeBPos, 3.5f, 0, 0.5f);
             });
 
 
         // ダメージ(1秒間)
-        Observable.Timer(TimeSpan.FromSeconds(14.5f))
+        Observable.Timer(TimeSpan.FromSeconds(14.7f))
             .Subscribe(_ =>
             {
                 // ジャンプ
@@ -100,6 +93,11 @@ public class SlimeB : MonoBehaviour
             });
 
 
+		Observable.Timer(TimeSpan.FromSeconds(17.0f))
+.Subscribe(_ =>
+{
+Destroy(gameObject);
+});
 
-    }
+	}
 }

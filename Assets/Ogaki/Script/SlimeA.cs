@@ -58,7 +58,7 @@ public class SlimeA : MonoBehaviour
                 // ジャンプ２
                 .Append(transform.DOLocalJump
                 (new Vector3(6.0f, 0.0f, -3.5f),2.0f, 1, 0.5f))
-                
+
                 // ジャンプ３
                 .Append(transform.DOLocalJump
                 (_yangasuPos, 1.0f, 1, 0.4f))
@@ -71,13 +71,14 @@ public class SlimeA : MonoBehaviour
                 .Append(transform.DOLocalMove
                 (new Vector3(9.3f, 0.0f, -7), 0.3f))
 
+				// 元の場所にジャンプ
                 .Append(transform.DOLocalJump
-                (m_slimeAPos, 3.5f, 1, 0.5f))
+                (new Vector3(13.4f,0,6.7f), 3.5f, 1, 0.5f))
                 .SetAutoKill(false);
             });
 
         // アタック(1秒間)
-        Observable.Timer(TimeSpan.FromSeconds(19.0f))
+        Observable.Timer(TimeSpan.FromSeconds(21.0f))
             .Subscribe(_ =>
             {
                 Sequence Seq = DOTween.Sequence()
@@ -88,24 +89,20 @@ public class SlimeA : MonoBehaviour
 
                 // その場ジャンプ
                 .Append(transform.DOLocalJump
-                (new Vector3(-2.3f, 1.2f, -7.7f), 1.5f, 1, 0.3f))
+                (new Vector3(-2.3f, 0, -7.7f), 1.5f, 1, 0.3f))
 
-                //// 攻撃
-                //.Append(transform.DOLocalMove
-                //(new Vector3(-2.2f, 0.0f, -9.2f), 0.3f))
-                
                 // 元の場所にジャンプ
                 .Append(transform.DOLocalJump
-                (m_slimeAPos, 3.5f, 1, 0.5f))
-                
+                (new Vector3(13.4f, 0, 6.7f), 3.5f, 1, 0.5f))
+
                 .SetAutoKill(false);
-                
+
             });
 
 
-        
+
         // ダメージ(1秒間)
-        Observable.Timer(TimeSpan.FromSeconds(26.1f))
+        Observable.Timer(TimeSpan.FromSeconds(26.0f))
             .Subscribe(_ =>
             {
                 // ジャンプ
@@ -118,8 +115,13 @@ public class SlimeA : MonoBehaviour
                 m_anime.speed = 0;
 
             });
-        
+
+		Observable.Timer(TimeSpan.FromSeconds(28.5f))
+.Subscribe(_ =>
+{
+Destroy(gameObject);
+});
 
 
-    }
+	}
 }
